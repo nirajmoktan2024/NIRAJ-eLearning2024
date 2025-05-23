@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses - NIRAJ-eLearning2024</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/logo.png" alt="Logo">
+      <h1>NIRAJ-eLearning2024</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html" class="active">Courses</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main class="courses-container">
+    <div class="courses-header">
+      <h1>Explore Our Courses</h1>
+      <div class="search-filter">
+        <input type="text" placeholder="Search courses..." id="searchInput">
+        <div class="filter-options">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="beginner">Beginner</button>
+          <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+          <button class="filter-btn" data-filter="advanced">Advanced</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="courses-grid" id="coursesGrid">
+      <div class="course-card" data-level="beginner" id="fullstack">
+        <img src="assets/course1.png" alt="Full Stack Development">
+        <div class="course-details">
+          <div class="course-title">
+            <h3>Full Stack Development</h3>
+            <span class="price">FREE</span>
+          </div>
+          <p>Master frontend and backend technologies to build complete web applications.</p>
+          <div class="course-meta">
+            <span> 8 Weeks</span>
+            <span> 25 Lessons</span>
+          </div>
+          <div class="course-actions">
+            <a href="#" class="btn outline">Preview</a>
+            <a href="#" class="btn primary">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="intermediate" id="dsa">
+        <img src="assets/course2.png" alt="Data Structures">
+        <div class="course-details">
+          <div class="course-title">
+            <h3>Data Structures & Algorithms</h3>
+            <span class="price">FREE</span>
+          </div>
+          <p>Essential computer science concepts for technical interviews.</p>
+          <div class="course-meta">
+            <span> 6 Weeks</span>
+            <span> 18 Lessons</span>
+          </div>
+          <div class="course-actions">
+            <a href="#" class="btn outline">Preview</a>
+            <a href="#" class="btn primary">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="beginner" id="database">
+        <img src="assets/course3.png" alt="Database">
+        <div class="course-details">
+          <div class="course-title">
+            <h3>Database Management</h3>
+            <span class="price">FREE</span>
+          </div>
+          <p>Learn SQL, NoSQL, and database design principles.</p>
+          <div class="course-meta">
+            <span> 4 Weeks</span>
+            <span> 12 Lessons</span>
+          </div>
+          <div class="course-actions">
+            <a href="#" class="btn outline">Preview</a>
+            <a href="#" class="btn primary">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 NIRAJ-eLearning | Built by NIRAJ MOKTAN</p>
+  </footer>
+
+  <script>
+    // Simple filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        const courses = document.querySelectorAll('.course-card');
+        
+        courses.forEach(course => {
+          if (filter === 'all' || course.dataset.level === filter) {
+            course.style.display = 'flex';
+          } else {
+            course.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Simple search functionality
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const courses = document.querySelectorAll('.course-card');
+      
+      courses.forEach(course => {
+        const title = course.querySelector('h3').textContent.toLowerCase();
+        if (title.includes(searchTerm)) {
+          course.style.display = 'flex';
+        } else {
+          course.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
