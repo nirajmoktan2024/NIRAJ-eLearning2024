@@ -53,33 +53,34 @@
   </footer>
   
   <script>
-    // Admin dashboard access control
-    document.addEventListener('DOMContentLoaded', function() {
-      const user = JSON.parse(localStorage.getItem('currentUser'));
+  // Admin access control
+  document.addEventListener('DOMContentLoaded', function() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    const adminLink = document.createElement('a');
+    
+    adminLink.href = 'admin.html';
+    adminLink.textContent = 'Admin';
+    adminLink.className = 'admin-nav-link';
+    
+    const nav = document.querySelector('nav');
+    if (nav) {
+      // Insert after the last nav item
+      nav.insertBefore(adminLink, nav.lastElementChild.nextSibling);
       
-      // 1. Create admin link element
-      const adminLink = document.createElement('a');
-      adminLink.href = 'admin.html';
-      adminLink.textContent = 'Admin';
-      adminLink.className = 'admin-nav-link'; // Add to your CSS
+      // Toggle visibility
+      adminLink.style.display = user?.role === 'admin' ? 'block' : 'none';
       
-      // 2. Find where to insert it (after last nav item)
-      const nav = document.querySelector('nav');
-      if (nav) {
-        nav.appendChild(adminLink);
-        
-        // 3. Show only if admin is logged in
-        if (user?.role === 'admin') {
-          adminLink.style.display = 'block';
-          
-          // Optional: Auto-redirect to dashboard
-          // window.location.href = 'admin.html';
-        } else {
-          adminLink.style.display = 'none';
-        }
+      // Optional: Add admin-only course controls
+      if (user?.role === 'admin') {
+        document.querySelectorAll('.course-card').forEach(card => {
+          const editBtn = document.createElement('button');
+          editBtn.textContent = 'Edit';
+          editBtn.className = 'edit-btn';
+          card.appendChild(editBtn);
+        });
       }
-    });
-  </script>
-</body> <!-- This is the closing body tag -->
+    }
+  });
+</script>
 </body>
 </html>
