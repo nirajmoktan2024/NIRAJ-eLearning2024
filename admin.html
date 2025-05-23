@@ -61,5 +61,12 @@
   <footer class="admin-footer">
     <p>Admin Panel &copy; 2024 NIRAJ-eLearning</p>
   </footer>
+  <script src="auth.js"></script>
+<script>
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+  if (!user || user.role !== 'admin') {
+    window.location.href = 'login.html';
+  }
+</script>
 </body>
 </html>
