@@ -51,5 +51,35 @@
   <footer>
     <p>&copy; 2024 NIRAJ-eLearning | Built by NIRAJ MOKTAN</p>
   </footer>
+  
+  <script>
+    // Admin dashboard access control
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('currentUser'));
+      
+      // 1. Create admin link element
+      const adminLink = document.createElement('a');
+      adminLink.href = 'admin.html';
+      adminLink.textContent = 'Admin';
+      adminLink.className = 'admin-nav-link'; // Add to your CSS
+      
+      // 2. Find where to insert it (after last nav item)
+      const nav = document.querySelector('nav');
+      if (nav) {
+        nav.appendChild(adminLink);
+        
+        // 3. Show only if admin is logged in
+        if (user?.role === 'admin') {
+          adminLink.style.display = 'block';
+          
+          // Optional: Auto-redirect to dashboard
+          // window.location.href = 'admin.html';
+        } else {
+          adminLink.style.display = 'none';
+        }
+      }
+    });
+  </script>
+</body> <!-- This is the closing body tag -->
 </body>
 </html>
