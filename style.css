@@ -617,3 +617,16 @@ footer p {
 .logout {
   color: #ff6b6b;
 }
+.admin-nav-link {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 8px 15px;
+  background: #ff6b6b;
+  border-radius: 5px;
+  display: none; /* Hidden by default */
+}
+
+.admin-nav-link:hover {
+  background: #ff5252;
+}
