@@ -632,8 +632,3 @@ footer p {
   background: #ff5252;
   transform: translateY(-2px);
 }
-.header-logo {
-  max-width: 100%;  /* Responsive scaling */
-  height: auto;     /* Maintain proportions */
-  display: block;   /* Remove inline spacing */
-}
