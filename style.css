@@ -632,13 +632,3 @@ footer p {
   background: #ff5252;
   transform: translateY(-2px);
 }
-<style>
-    .logo-container {
-        text-align: center;
-        padding: 20px 0;
-    }
-    .logo {
-        height: 80px; /* Adjust this value */
-        width: auto;
-    }
-</style>
